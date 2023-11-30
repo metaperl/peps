@@ -1,0 +1,138 @@
+PEP: 8106
+Title: Enhance logging API with PEP-0008-compliant aliases
+Author: Terrence Brannon <metaperl@gmail.com>
+Sponsor: ???
+Status: Draft
+Type: Process - I guess!
+Created: 30-Nov-2023
+Post-History: `None yet <https://>`__
+
+
+.. highlight:: rst
+
+
+
+Abstract
+========
+
+This PEP provides a rationale and mocked-up solution for making the
+`standard logging library <https://docs.python.org/3/howto/logging.html>`__
+conform to :pep:`0008`.
+
+Rationale
+=========
+
+:pep:`0008` is the de-facto coding *standard* for Python. However, those reading
+`the logging docs <https://docs.python.org/3/howto/logging.html>`__ will
+implicitly take the *standard* lightly because a *standard* library violates the 
+coding *standard* multiple times with no caveats or apologies.
+
+For :pep:`0008` to be taken seriously as a coding standard, the *standard*
+library modules should set an example for this.
+
+
+Suggested Solution
+==================
+
+The suggested solution is two-pronged:
+
+1. Update the logging API with properly formatted aliases
+2. Update the docs to refer to the aliases.
+
+Sample update of logging API
+----------------------------
+
+`The function basicConfig`_ could be refactored by placing an alias directly after the function definition like so::
+
+    basic_config = basicConfig
+
+.. _The function basicConfig: https://github.com/python/cpython/blob/6d5e0dc0e330f4009e8dc3d1642e46b129788877/Lib/logging/__init__.py#L1992
+
+
+It is to be noted that `the ``__all__`` variable`_ must also be updated with the correctly formatted aliases.
+
+.. _the __all__ variable: https://github.com/python/cpython/blob/674c288b1c29b5d838c0cb6de0ea7a64caf294ff/Lib/logging/__init__.py#L33C1-L33C8
+
+Estimated amount of work involved
+---------------------------------
+
+In `__init__.py`_ the following symbols are part of the public API and violate :pep:`0008` and can be aliased:
+
+1. ``setLevel`` 
+2. ``isEnabledFor``
+3. ``getEffectiveLevel``
+4. ``getChild``
+5. ``getChildren``
+6. ``makeRecord``
+7. ``hasHandlers``
+8. ``setFormatter``
+9. ``createLock``
+10. ``addFilter``
+11. ``removeFilter``
+12. ``handleError``
+13. ``formatTime``
+14. ``formatException``
+15. ``formatStack``
+16. ``formatHeader``
+17. ``formatFooter``
+18. ``getMessage``
+19. ``getLoggerClass``
+20. ``getLogRecordFactory``
+21. ``setLogRecordFactory``
+22. ``addLevelName``
+23. ``getLevelName``
+24. ``getLevelNamesMapping``
+25. ``getHandlerByName``
+26. ``getHandlerNames``
+27. ``makeLogRecord``
+28. ``setLoggerClass``
+29. ``lastResort``
+30. ``captureWarnings``
+
+In `config.py`_ the following symbols are part of the public API and violate :pep:`0008` and can be aliased:
+
+1. ``fileConfig`` 
+2. ``dictConfig``
+3. ``stopListening``
+   
+
+In `handlers.py`_ the following symbols are part of the public API and violate :pep:`0008` and can be aliased:
+
+1. ``setStream`` 
+2. ``createLock``
+3. ``reopenIfNeeded``
+4. ``doRollover`` - note that this is a class method with more than one instance.
+5. ``getFilesToDelete``
+6. ``handleError``
+7. ``makeSocket``
+8. ``makePickle``
+9. ``createSocket`` - note that this is a class method with more than one instance.
+10. ``encodePriority``
+11. ``mapPriority``
+12. ``getEventCategory``
+13. ``getEventType``
+14. ``getMessageID``
+15. ``getSubject``
+16. ``shouldFlush``
+17. ``setTarget``
+18. ``mapLogRecord``
+    
+ 
+
+.. ___init__.py: https://github.com/python/cpython/blob/6d5e0dc0e330f4009e8dc3d1642e46b129788877/Lib/logging/__init__.py
+.. _config.py: https://github.com/python/cpython/blob/6d5e0dc0e330f4009e8dc3d1642e46b129788877/Lib/logging/config.py
+.. _handlers.py: https://github.com/python/cpython/blob/6d5e0dc0e330f4009e8dc3d1642e46b129788877/Lib/logging/handlers.py
+
+
+Resources
+=========
+
+
+
+
+
+Copyright
+=========
+
+This document is placed in the public domain or under the
+CC0-1.0-Universal license, whichever is more permissive.
