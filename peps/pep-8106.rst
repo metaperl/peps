@@ -50,14 +50,14 @@ Sample update of logging API
 .. _The function basicConfig: https://github.com/python/cpython/blob/6d5e0dc0e330f4009e8dc3d1642e46b129788877/Lib/logging/__init__.py#L1992
 
 
-It is to be noted that `the ``__all__`` variable`_ must also be updated with the correctly formatted aliases.
 
-.. _the __all__ variable: https://github.com/python/cpython/blob/674c288b1c29b5d838c0cb6de0ea7a64caf294ff/Lib/logging/__init__.py#L33C1-L33C8
+
 
 Estimated amount of work involved
 ---------------------------------
 
-In `__init__.py`_ the following symbols are part of the public API and violate :pep:`0008` and can be aliased:
+
+In ``Lib/logging/__init__.py`` the following symbols are part of the public API and violate :pep:`0008` and can be aliased:
 
 1. ``setLevel`` 
 2. ``isEnabledFor``
@@ -89,6 +89,9 @@ In `__init__.py`_ the following symbols are part of the public API and violate :
 28. ``setLoggerClass``
 29. ``lastResort``
 30. ``captureWarnings``
+
+In addition to correcting the symbols is to be noted that the ``__all__`` variable must also be updated with the
+correctly formatted aliases.
 
 In `config.py`_ the following symbols are part of the public API and violate :pep:`0008` and can be aliased:
 
@@ -129,9 +132,9 @@ Resources
 =========
 
 * `The documentation for Python standard logging <https://docs.python.org/3/library/logging.html>`_
-
-
-
+* `Lib/logging/__init__.py <https://github.com/python/cpython/blob/674c288b1c29b5d838c0cb6de0ea7a64caf294ff/Lib/logging/__init__.py>`_
+* `Lib/logging/config.py <https://github.com/python/cpython/blob/674c288b1c29b5d838c0cb6de0ea7a64caf294ff/Lib/logging/config.py>`_
+* `Lib/logging/handlers.py <https://github.com/python/cpython/blob/674c288b1c29b5d838c0cb6de0ea7a64caf294ff/Lib/logging/handlers.py>`_
 
 Copyright
 =========
