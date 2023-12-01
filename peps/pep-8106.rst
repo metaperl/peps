@@ -16,14 +16,14 @@ Abstract
 ========
 
 This PEP provides a rationale and mocked-up solution for making the
-`standard logging library <https://docs.python.org/3/howto/logging.html>`__
+`standard logging library <https://docs.python.org/3/library/logging.html>`__
 conform to :pep:`0008`.
 
 Rationale
 =========
 
 :pep:`0008` is the de-facto coding *standard* for Python. However, those reading
-`the logging docs <https://docs.python.org/3/howto/logging.html>`__ will
+`the logging docs <https://docs.python.org/3/library/logging.html>`__ will
 implicitly take the *standard* lightly because a *standard* library violates the 
 coding *standard* multiple times with no caveats or apologies.
 
@@ -34,10 +34,11 @@ library modules should set an example for this.
 Suggested Solution
 ==================
 
-The suggested solution is two-pronged:
+The suggested solution is to:
 
-1. Update the logging API with properly formatted aliases
+1. Update the logging API with properly formatted aliases.
 2. Update the docs to refer to the aliases.
+3. Update the test suite to reference the properly formatted aliases.
 
 Sample update of logging API
 ----------------------------
@@ -127,6 +128,7 @@ In `handlers.py`_ the following symbols are part of the public API and violate :
 Resources
 =========
 
+* `The documentation for Python standard logging <https://docs.python.org/3/library/logging.html>`_
 
 
 
