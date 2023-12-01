@@ -6,6 +6,7 @@ Status: Draft
 Type: Process - I guess!
 Created: 30-Nov-2023
 Post-History:   `01-Dec-2023 <https://www.reddit.com/r/programming/comments/188bstj/pythons_standard_logging_api_violates_pep8_and/>`__,
+                `01-Deec-2023 <https://discuss.python.org/t/proposed-pep-enhance-logging-api-with-pep-0008-compliant-aliases/40067/3>`__,
                 `01-Dec-2023 <https://programming.dev/post/6660462>`__,
                 `01-Dec-2023 <https://mastodon.social/@thedeepself/111505286335042189>`__,
                 `01-Dec-2023 <https://discord.com/channels/267624335836053506/709904092280914030/1180135437986168852>`__,
